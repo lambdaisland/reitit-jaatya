@@ -13,11 +13,6 @@
     (io/make-parents final-path)
     (spit final-path content)))
 
-(defn freeze-pages [pages template]
-  (println "Freezing pages @ " template)
-  (doseq [{:keys [path response]} pages]
-    (freeze-page path (:body response))))
-
 (defn iced [handler]
   (let [router (get-router handler)
         routes (r/routes router)]
@@ -25,15 +20,14 @@
       (let [freeze (if (nil? freeze)
                      (constantly [{}])
                      freeze)]
-        (freeze-pages
-         (into []
-               (comp
-                (map #(r/match-by-name router name %))
-                (map #(->> (mock/request :get (:path %))
-                           handler
-                           (assoc {:path (:path %)} :response))))
-               (freeze))
-         template)))))
+        (println "Freezing pages @ " template)
+        (doseq [path-params (freeze)]
+          (let [match (r/match-by-name router name path-params)
+                path (:path match)
+                resp (-> (mock/request :get path)
+                         handler)
+                content (-> resp :body slurp)]
+            (freeze-page path content)))))))
 
 (comment
   (defn test-handler [data]
