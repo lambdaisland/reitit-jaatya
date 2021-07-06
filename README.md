@@ -1,7 +1,7 @@
 # reitit-jäätyä
 
-<!-- Badges -->
-[![CircleCI](https://circleci.com/gh/lambdaisland/reitit-jaatya.svg?style=svg)](https://circleci.com/gh/lambdaisland/reitit-jaatya) [![cljdoc badge](https://cljdoc.org/badge/lambdaisland/reitit-jaatya)](https://cljdoc.org/d/lambdaisland/reitit-jaatya) [![Clojars Project](https://img.shields.io/clojars/v/lambdaisland/reitit-jaatya.svg)](https://clojars.org/lambdaisland/reitit-jaatya)
+<!-- badges -->
+[![cljdoc badge](https://cljdoc.org/badge/com.lambdaisland/reitit-jaatya)](https://cljdoc.org/d/com.lambdaisland/reitit-jaatya) [![Clojars Project](https://img.shields.io/clojars/v/com.lambdaisland/reitit-jaatya.svg)](https://clojars.org/com.lambdaisland/reitit-jaatya)
 <!-- /badges -->
 
 > reitit means *routes* and *jäätyä* means freeze
