@@ -1,13 +1,15 @@
 {:paths ["src" "resources"]
 
  :deps
- {org.clojure/clojure {:mvn/version "1.10.1"}}
+ {org.clojure/clojure {:mvn/version "1.10.1"}
+  ring/ring-mock {:mvn/version "0.4.0"}}
 
  :aliases
  {:dev
   {:extra-paths ["dev"]
-   :extra-deps  {}}
+   :extra-deps  {metosin/reitit {:mvn/version "0.5.13"}}}
 
   :test
   {:extra-paths ["test"]
    :extra-deps  {lambdaisland/kaocha {:mvn/version "1.0.632"}}}}}
+

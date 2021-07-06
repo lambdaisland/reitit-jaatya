@@ -1,10 +1,25 @@
-# reitit-jaatya
+# reitit-jäätyä
 
-<!-- badges -->
-[![cljdoc badge](https://cljdoc.org/badge/com.lambdaisland/reitit-jaatya)](https://cljdoc.org/d/com.lambdaisland/reitit-jaatya) [![Clojars Project](https://img.shields.io/clojars/v/com.lambdaisland/reitit-jaatya.svg)](https://clojars.org/com.lambdaisland/reitit-jaatya)
+<!-- Badges -->
+[![CircleCI](https://circleci.com/gh/lambdaisland/reitit-jaatya.svg?style=svg)](https://circleci.com/gh/lambdaisland/reitit-jaatya) [![cljdoc badge](https://cljdoc.org/badge/lambdaisland/reitit-jaatya)](https://cljdoc.org/d/lambdaisland/reitit-jaatya) [![Clojars Project](https://img.shields.io/clojars/v/lambdaisland/reitit-jaatya.svg)](https://clojars.org/lambdaisland/reitit-jaatya)
 <!-- /badges -->
 
-Freeze your reitit routes and create a static site out of it
+> reitit means *routes* and *jäätyä* means freeze
+
+Freeze your reitit routes and create a static site out of it.
+
+## Why?
+
+This library will allow you to create a static website out of your *existing*
+dynamic website as long as you're using reitit ;)
+
+## How?
+
+Point jaatya to your reitit routes map and let it start the freezing process.
+
+Jaatya will fake an http request and pass it along to the handler to record it's
+response. If a response is `200` then a new html page is created based on the
+url route.
 
 ## Features
 
