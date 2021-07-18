@@ -1,4 +1,4 @@
-(ns reitit-jaatya.freeze
+(ns lambdaisland.reitit-jaatya.freeze
   (:require [clojure.java.io :as io]
             [reitit.ring :as ring]
             [ring.mock.request :as mock]
