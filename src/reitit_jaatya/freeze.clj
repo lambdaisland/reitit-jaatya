@@ -7,27 +7,34 @@
 (defn get-router [handler]
   (-> handler meta ::r/router))
 
-(defn freeze-page [path content]
+(defn freeze-page [path content & [{:keys [content-type]
+                                    :or {content-type :html}}]]
   (println " > " path)
-  (let [final-path (str "_site" path "/index.html")]
+  (let [final-path (if (= content-type :html)
+                     (str "_site" path "/index.html")
+                     (str "_site" path))]
     (io/make-parents final-path)
     (spit final-path content)))
 
 (defn iced [handler]
   (let [router (get-router handler)
         routes (r/routes router)]
-    (doseq [[template {:keys [name freeze]}] routes]
-      (let [freeze (if (nil? freeze)
-                     (constantly [{}])
-                     freeze)]
+    (doseq [[template {:keys [name freeze-data-fn freeze-content-type]
+                       :or {freeze-content-type :html}}] routes]
+      (let [freeze-data-fn (if (nil? freeze-data-fn)
+                             (constantly [{}])
+                             freeze-data-fn)]
         (println "Freezing pages @ " template)
-        (doseq [path-params (freeze)]
+        (doseq [path-params (freeze-data-fn)]
           (let [match (r/match-by-name router name path-params)
                 path (:path match)
-                resp (-> (mock/request :get path)
-                         handler)
+                resp (cond-> (mock/request :get path)
+                       (= freeze-content-type :json)
+                       (mock/header "accept" "application/json")
+                       :always
+                       handler)
                 content (-> resp :body slurp)]
-            (freeze-page path content)))))))
+            (freeze-page path content {:content-type freeze-content-type})))))))
 
 (comment
   (defn test-handler [data]
