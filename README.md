@@ -41,7 +41,53 @@ or add the following to your `project.clj` ([Leiningen](https://leiningen.org/))
 
 ## Rationale
 
+`reitit-jaatya` uses the reitit routes as the canonical source of the final website structure.
+
+Given a HTTP handler and reitit routes definition, jaatya will mock HTTP requests to each route
+and create static files out of the successful HTTP responses.
+
+There could be several reason why doing this might be better than simply using a traditional SSG:
+
+1. It allows the flexibility of building the website as a traditional server garnering all the benefits like tooling, repl driven development, no need to worry about startup times, etc.
+2. It gives the option to have a backend server always running (be it for admin dashboards, CMS, scheduling services, etc)
+3. Not sure if your website might need dynamic behaviour in the future? No need to decide now and lock yourself into a static site generator. Just build it as a dynamic site from the get-go but deploy the frozen version until you are ready to commit.
+4. Selectievely convert parts of your site to static version for higher performance
+
 ## Usage
+
+This sample code shows how to use reitit-jaatya in a project.
+
+``` clojure
+(ns mywebsite
+  (:require [reitit.ring :as ring]
+            [reitit.core :as r]))
+
+(defn test-handler [data]
+  {:status 200
+   :body "test body"})
+
+(def router
+  (ring/router
+    ["/api"
+    ["/ping" {:name ::ping :get test-handler :freeze-data-fn (fn []
+                                                                [{}])}]
+    ["/user/:id/:name" {:name :user/id :get test-handler
+                        :freeze-data-fn (fn []
+                                        [{:id 1 :name "ox"}
+                                         {:id 20 :name "cyborg"}])}]]))
+
+(def handler (ring/ring-handler router))
+
+;; default build
+;; creates the site in `_site` directory with no sitemap and no base-url in sitemap
+(iced handler)
+
+;; customised build
+(iced handler {:sitemap-path "/sitemap"
+                :build-dir "_build"
+                :base-url "https://lambdaisland.com"})
+```
+
 
 <!-- opencollective -->
 ## Lambda Island Open Source
