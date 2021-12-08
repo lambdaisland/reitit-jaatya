@@ -47,7 +47,7 @@
             (swap! sitemap conj path)
             (freeze-page path content {:content-type freeze-content-type})))))
     (when sitemap-path
-      (create-sitemap base-url "/sitemap" @sitemap))
+      (create-sitemap base-url sitemap-path @sitemap))
     {:paths @sitemap}))
 
 (comment
