@@ -8,20 +8,17 @@
 (defn get-router [handler]
   (-> handler meta ::r/router))
 
-(defn freeze-page [path content & [{:keys [content-type]
-                                    :or {content-type :html}}]]
+(defn freeze-page [path content & [{:keys [content-type build-dir]
+                                    :or {content-type :html build-dir "_site"}}]]
   (println " > " path)
   (let [final-path (if (= content-type :html)
-                     (str "_site" path "/index.html")
-                     (str "_site" path))]
+                     (str build-dir path "/index.html")
+                     (str build-dir path))]
     (io/make-parents final-path)
     (spit final-path content)))
 
-(defn create-sitemap [base-url path urls]
-  (freeze-page path (sitemap/generate base-url urls) {:content-type :xml}))
-
-(defn iced [handler {:keys [sitemap-path base-url]
-                     :or {sitemap-path nil base-url ""}}]
+(defn iced [handler & [{:keys [sitemap-path base-url build-dir]
+                        :or {sitemap-path nil base-url "" build-dir "_site"}}]]
   (let [router (get-router handler)
         routes (r/routes router)
         sitemap (atom [])]
@@ -45,9 +42,12 @@
                           :else
                           (slurp body))]
             (swap! sitemap conj path)
-            (freeze-page path content {:content-type freeze-content-type})))))
+            (freeze-page path content {:content-type freeze-content-type
+                                       :build-dir build-dir})))))
     (when sitemap-path
-      (create-sitemap base-url sitemap-path @sitemap))
+      (freeze-page sitemap-path
+                   (sitemap/generate base-url @sitemap)
+                   {:content-type :xml :build-dir build-dir}))
     {:paths @sitemap}))
 
 (comment
@@ -72,5 +72,11 @@
 
   (r/routes (get-router handler))
 
+  ;; default build
   (iced handler)
+
+  ;; customised build
+  (iced handler {:sitemap-path "/sitemap"
+                 :build-dir "_build"
+                 :base-url "https://lambdaisland.com"})
   ,)
