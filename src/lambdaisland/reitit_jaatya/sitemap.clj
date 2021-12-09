@@ -6,7 +6,8 @@
   (let [fmt (java.text.SimpleDateFormat. "yyyy-MM-dd")]
     (.format fmt date)))
 
-(defn generate [site-url paths & [{:keys [ignored-files sitemap-ignored-paths]}]]
+(defn generate [site-url paths & [{:keys [trailing-slash ignored-files sitemap-ignored-paths]
+                                   :or {trailing-slash false}}]]
   (with-out-str
     (emit
       {:tag :urlset
@@ -16,6 +17,6 @@
          {:tag :url
           :content
           [{:tag :loc
-            :content [(str site-url path)]}
+            :content [(str site-url path (when trailing-slash "/"))]}
            #_{:tag :lastmod
             :content [(-> f (.lastModified) (Date.) format-date)]}]})})))

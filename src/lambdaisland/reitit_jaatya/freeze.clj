@@ -17,8 +17,8 @@
     (io/make-parents final-path)
     (spit final-path content)))
 
-(defn iced [handler & [{:keys [sitemap-path base-url build-dir]
-                        :or {sitemap-path nil base-url "" build-dir "_site"}}]]
+(defn iced [handler & [{:keys [sitemap-path sitemap-trailing-slash base-url build-dir]
+                        :or {sitemap-path nil sitemap-trailing-slash false base-url "" build-dir "_site"}}]]
   (let [router (get-router handler)
         routes (r/routes router)
         sitemap (atom [])]
@@ -46,7 +46,7 @@
                                        :build-dir build-dir})))))
     (when sitemap-path
       (freeze-page sitemap-path
-                   (sitemap/generate base-url @sitemap)
+                   (sitemap/generate base-url @sitemap {:trailing-slash trailing-slash})
                    {:content-type :xml :build-dir build-dir}))
     {:paths @sitemap}))
 
