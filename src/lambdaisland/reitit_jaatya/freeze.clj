@@ -46,7 +46,7 @@
                                        :build-dir build-dir})))))
     (when sitemap-path
       (freeze-page sitemap-path
-                   (sitemap/generate base-url @sitemap {:trailing-slash trailing-slash})
+                   (sitemap/generate base-url @sitemap {:trailing-slash sitemap-trailing-slash})
                    {:content-type :xml :build-dir build-dir}))
     {:paths @sitemap}))
 
@@ -57,13 +57,15 @@
 
   (def router
     (ring/router
-     ["/api"
-      ["/ping" {:name ::ping :get test-handler :freeze-data-fn (fn []
-                                                                 [{}])}]
-      ["/user/:id/:name" {:name :user/id :get test-handler
-                          :freeze-data-fn (fn []
-                                            [{:id 1 :name "ox"}
-                                             {:id 20 :name "cyborg"}])}]]))
+     [
+      ["/" {:name ::home :get test-handler}]
+      ["/api"
+       ["/ping" {:name ::ping :get test-handler :freeze-data-fn (fn []
+                                                                  [{}])}]
+       ["/user/:id/:name" {:name :user/id :get test-handler
+                           :freeze-data-fn (fn []
+                                             [{:id 1 :name "ox"}
+                                              {:id 20 :name "cyborg"}])}]]]))
 
   (def handler (ring/ring-handler router))
 
@@ -78,5 +80,6 @@
   ;; customised build
   (iced handler {:sitemap-path "/sitemap"
                  :build-dir "_build"
+                 :sitemap-trailing-slash true
                  :base-url "https://lambdaisland.com"})
   ,)

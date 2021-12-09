@@ -1,5 +1,6 @@
 (ns lambdaisland.reitit-jaatya.sitemap
-  (:require [clojure.xml :refer [emit]])
+  (:require [clojure.xml :refer [emit]]
+            [clojure.string :as string])
   (:import java.util.Date))
 
 (defn format-date [date]
@@ -17,6 +18,9 @@
          {:tag :url
           :content
           [{:tag :loc
-            :content [(str site-url path (when trailing-slash "/"))]}
+            :content [(str site-url
+                           path
+                           (when (and trailing-slash (not (string/ends-with? path "/")))
+                             "/"))]}
            #_{:tag :lastmod
             :content [(-> f (.lastModified) (Date.) format-date)]}]})})))
