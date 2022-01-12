@@ -89,6 +89,12 @@ This sample code shows how to use reitit-jaatya in a project.
 ```
 
 
+## Projects powered by reitit-jaatya
+
+* [gaiwan.co](https://gaiwan.co) - [github.com/lambdaisland/gaiwan_co](https://github.com/lambdaisland/gaiwan_co)
+* [reClojure.org](https://reclojure.org) - [github.com/reclojure/reclojure.github.io/](https://github.com/reclojure/reclojure.github.io/)
+* [DevOps Enterprise Summit - Video Library](https://videos.itrevolution.com)
+
 <!-- opencollective -->
 ## Lambda Island Open Source
 
