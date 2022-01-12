@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.lambdaisland</groupId>
   <artifactId>reitit-jaatya</artifactId>
-  <version>0.0.9</version>
+  <version>0.0.24</version>
   <name>reitit-jaatya</name>
   <description>Freeze your reitit routes and create a static site out of it</description>
   <url>https://github.com/lambdaisland/reitit-jaatya</url>
@@ -22,7 +22,7 @@
     <url>https://github.com/lambdaisland/reitit-jaatya</url>
     <connection>scm:git:git://github.com/lambdaisland/reitit-jaatya.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/lambdaisland/reitit-jaatya.git</developerConnection>
-    <tag>28914c2cf61c7355dc47770e72f12b3fb3ff3307</tag>
+    <tag>b9401384f00a0429d9e276187c3a683eb4ce6c50</tag>
   </scm>
   <dependencies>
     <dependency>
@@ -59,7 +59,7 @@
         <configuration>
           <archive>
             <manifestEntries>
-              <git-revision>28914c2cf61c7355dc47770e72f12b3fb3ff3307</git-revision>
+              <git-revision>b9401384f00a0429d9e276187c3a683eb4ce6c50</git-revision>
             </manifestEntries>
           </archive>
         </configuration>
