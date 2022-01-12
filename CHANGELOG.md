@@ -2,7 +2,12 @@
 
 ## Added
 
+- inbuilt support for sitemap generation
+- build-dir can be customised (default is `_site`)
+
 ## Fixed
+
+- trailing slash bug
 
 ## Changed
 
