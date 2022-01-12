@@ -29,13 +29,13 @@ url route.
 To use the latest release, add the following to your `deps.edn` ([Clojure CLI](https://clojure.org/guides/deps_and_cli))
 
 ```
-com.lambdaisland/reitit-jaatya {:mvn/version "0.0.22"}
+com.lambdaisland/reitit-jaatya {:mvn/version "0.0.23"}
 ```
 
 or add the following to your `project.clj` ([Leiningen](https://leiningen.org/))
 
 ```
-[com.lambdaisland/reitit-jaatya "0.0.22"]
+[com.lambdaisland/reitit-jaatya "0.0.23"]
 ```
 <!-- /installation -->
 
