@@ -4,13 +4,14 @@
 [![cljdoc badge](https://cljdoc.org/badge/com.lambdaisland/reitit-jaatya)](https://cljdoc.org/d/com.lambdaisland/reitit-jaatya) [![Clojars Project](https://img.shields.io/clojars/v/com.lambdaisland/reitit-jaatya.svg)](https://clojars.org/com.lambdaisland/reitit-jaatya)
 <!-- /badges -->
 
+<!-- gaiwan-ad -->
+**This project is a part of the [Gaiwan Clojure family](https://gaiwan.co) of projects**.
+---
+<!-- /gaiwan-ad -->
+
 > reitit means *routes* and *jäätyä* means freeze
 
 Freeze your reitit routes and create a static site out of it.
-
-<!-- gaiwan-ad -->
-**This project is a part of the [Gaiwan Clojure family](https://gaiwan.co) of projects**.
-<!-- /gaiwan-ad -->
 
 ## Why?
 
