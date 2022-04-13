@@ -8,6 +8,10 @@
 
 Freeze your reitit routes and create a static site out of it.
 
+<!-- gaiwan-ad -->
+**This project is a part of the [Gaiwan Clojure family](https://gaiwan.co) of projects**.
+<!-- /gaiwan-ad -->
+
 ## Why?
 
 This library will allow you to create a static website out of your *existing*
@@ -150,7 +154,7 @@ changes are justified.
 <!-- license -->
 ## License
 
-Copyright &copy; 2021 Arne Brasseur and Contributors
+Copyright &copy; 2021-2022 Arne Brasseur and Contributors
 
 Licensed under the term of the Mozilla Public License 2.0, see LICENSE.
 <!-- /license -->
