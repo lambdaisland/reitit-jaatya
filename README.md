@@ -6,6 +6,7 @@
 
 <!-- gaiwan-ad -->
 **This project is a part of the [Gaiwan Clojure family](https://gaiwan.co) of projects**.
+
 ---
 <!-- /gaiwan-ad -->
 
@@ -95,6 +96,10 @@ This sample code shows how to use reitit-jaatya in a project.
 
 
 ## Projects powered by reitit-jaatya
+
+Gaiwan.co is the best example repo there is to view reitit-jaatya in action.
+We're working to create a sample repo soon which can be forked so you can get
+started quickly.
 
 * [gaiwan.co](https://gaiwan.co) - [github.com/lambdaisland/gaiwan_co](https://github.com/lambdaisland/gaiwan_co)
 * [reClojure.org](https://reclojure.org) - [github.com/reclojure/reclojure.github.io/](https://github.com/reclojure/reclojure.github.io/)
