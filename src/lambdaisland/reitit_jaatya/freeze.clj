@@ -34,6 +34,10 @@
                 resp (cond-> (mock/request :get path)
                        (= freeze-content-type :json)
                        (mock/header "accept" "application/json")
+
+                       (string? freeze-content-type)
+                       (mock/header "accept" freeze-content-type)
+
                        :always
                        handler)
                 body (:body resp)
