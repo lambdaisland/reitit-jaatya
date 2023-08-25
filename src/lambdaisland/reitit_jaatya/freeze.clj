@@ -22,8 +22,9 @@
   (let [router (get-router handler)
         routes (r/routes router)
         sitemap (atom [])]
-    (doseq [[template {:keys [name freeze-data-fn freeze-content-type]
-                       :or {freeze-content-type :html}}] routes]
+    (doseq [[template {:keys [name freeze-data-fn freeze-content-type no-freeze]
+                       :or {freeze-content-type :html}}] routes
+            :when (not no-freeze)]
       (let [freeze-data-fn (if (nil? freeze-data-fn)
                              (constantly [{}])
                              freeze-data-fn)]
