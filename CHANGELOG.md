@@ -2,9 +2,8 @@
 
 ## Added
 
-## Fixed
-
-## Changed
+- no-freeze flag on a route, to skip it
+- allow specifying content type in full as a string
 
 # 0.0.24 (2022-01-13 / e6c3f62)
 
