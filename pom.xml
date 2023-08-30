@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.lambdaisland</groupId>
   <artifactId>reitit-jaatya</artifactId>
-  <version>0.0.24</version>
+  <version>0.1.33</version>
   <name>reitit-jaatya</name>
   <description>Freeze your reitit routes and create a static site out of it</description>
   <url>https://github.com/lambdaisland/reitit-jaatya</url>
@@ -12,6 +12,9 @@
     <name>Lambda Island</name>
     <url>https://lambdaisland.com</url>
   </organization>
+  <properties>
+    <project class="build sourceEncoding">UTF-8</project>
+  </properties>
   <licenses>
     <license>
       <name>MPL-2.0</name>
@@ -22,7 +25,7 @@
     <url>https://github.com/lambdaisland/reitit-jaatya</url>
     <connection>scm:git:git://github.com/lambdaisland/reitit-jaatya.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/lambdaisland/reitit-jaatya.git</developerConnection>
-    <tag>b9401384f00a0429d9e276187c3a683eb4ce6c50</tag>
+    <tag>4d897ecaad1fba4fd545f3985ec5255af09f2d2e</tag>
   </scm>
   <dependencies>
     <dependency>
@@ -51,6 +54,10 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -59,7 +66,7 @@
         <configuration>
           <archive>
             <manifestEntries>
-              <git-revision>b9401384f00a0429d9e276187c3a683eb4ce6c50</git-revision>
+              <git-revision>4d897ecaad1fba4fd545f3985ec5255af09f2d2e</git-revision>
             </manifestEntries>
           </archive>
         </configuration>
