@@ -6,6 +6,14 @@
 
 ## Changed
 
+# 0.1.34 (2023-09-25 / db8a963)
+
+## Added
+
+- `add-to-sitemap` flag on a route to specify if the route should be included in
+  the generated sitemap (defaults to `true`)
+- avoid creating an `index.html` file for HTML paths that already end in `.html`
+
 # 0.1.33 (2023-08-30 / e758a8a)
 
 ## Added
