@@ -3,7 +3,8 @@
             [lambdaisland.reitit-jaatya.sitemap :as sitemap]
             [reitit.ring :as ring]
             [ring.mock.request :as mock]
-            [reitit.core :as r]))
+            [reitit.core :as r]
+            [clojure.string :as str]))
 
 (defn get-router [handler]
   (-> handler meta ::r/router))
@@ -11,7 +12,7 @@
 (defn freeze-page [path content & [{:keys [content-type build-dir]
                                     :or {content-type :html build-dir "_site"}}]]
   (println " > " path)
-  (let [final-path (if (= content-type :html)
+  (let [final-path (if (and (= content-type :html) (not (str/ends-with? path ".html")))
                      (str build-dir path "/index.html")
                      (str build-dir path))]
     (io/make-parents final-path)
