@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.lambdaisland</groupId>
   <artifactId>reitit-jaatya</artifactId>
-  <version>0.1.33</version>
+  <version>0.2.40</version>
   <name>reitit-jaatya</name>
   <description>Freeze your reitit routes and create a static site out of it</description>
   <url>https://github.com/lambdaisland/reitit-jaatya</url>
@@ -25,13 +25,13 @@
     <url>https://github.com/lambdaisland/reitit-jaatya</url>
     <connection>scm:git:git://github.com/lambdaisland/reitit-jaatya.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/lambdaisland/reitit-jaatya.git</developerConnection>
-    <tag>4d897ecaad1fba4fd545f3985ec5255af09f2d2e</tag>
+    <tag>c931e9c01a4d9312742e891cbb15379d8d3b5d26</tag>
   </scm>
   <dependencies>
     <dependency>
       <groupId>org.clojure</groupId>
       <artifactId>clojure</artifactId>
-      <version>1.10.1</version>
+      <version>1.11.1</version>
     </dependency>
     <dependency>
       <groupId>ring</groupId>
@@ -66,7 +66,7 @@
         <configuration>
           <archive>
             <manifestEntries>
-              <git-revision>4d897ecaad1fba4fd545f3985ec5255af09f2d2e</git-revision>
+              <git-revision>c931e9c01a4d9312742e891cbb15379d8d3b5d26</git-revision>
             </manifestEntries>
           </archive>
         </configuration>
