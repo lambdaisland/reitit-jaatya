@@ -1,4 +1,4 @@
-# Unreleased
+# 0.2.40 (2023-12-05 / ab4b1e2)
 
 ## Added
 
